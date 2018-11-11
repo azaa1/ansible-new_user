@@ -1,8 +1,11 @@
 # new_user
 
-This playbook adds a new user to remote hosts
+This repo contains 2 playbooks 
 
-The playbook is set to take user's input for:
+1. ping.yml             -- a simple playbook to ping remote hosts
+2. add-user.yml         -- this playbook will add a new user to reomte host/hosts
+
+add-user.yml playbook is set to take user's input for:
 
     - hosts             -- which hosts to run the playbook on 
     - username          -- 'username' for the new user

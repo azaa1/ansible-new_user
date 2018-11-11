@@ -1,0 +1,41 @@
+---
+  - name: Add user/users to Hosts
+    hosts: "{{hosts}}"
+
+    vars_prompt:
+      - name: "hosts"
+        prompt: "Which Host/Hosts This Playbook Should Run On"
+        private: no
+
+      - name: "username"
+        prompt: "Enter Username"
+        private: "no"
+
+      - name: "fullname"
+        prompt: "Enter User's Full Name"
+        private: no
+
+      - name: "uid"
+        prompt: "Enter UID"
+        private: "no"
+
+      - name: "group"
+        prompt: "Enter Group Name For The User"
+        private: no
+
+      - name: "password"
+        prompt: "Enter password for the user"
+        private: yes
+        encrypt: "sha512_crypt"
+        confirm: yes
+        salt_size: 7
+
+    tasks:
+
+      - name: Adding User
+        user: 
+          name: "{{username}"
+          comment: "{{fullname}}"
+          uid: "{{uid}}"
+          group: "{{group}}"
+          password: "{{password}}"
